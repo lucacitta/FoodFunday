@@ -1,0 +1,1043 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0">
+
+    <!-- Site Metas -->
+    <title>Food Funday Restaurant</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Site Icons -->
+    <link rel="shortcut icon" href="{%static 'images/favicon.ico'%}" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="{%static 'images/apple-touch-icon.png'%}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{%static 'css/bootstrap.min.css'%}">
+    <!-- Site CSS -->
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="{%static 'css/responsive.css'%}">
+    <!-- color -->
+    <link id="changeable-colors" rel="stylesheet" href="{%static 'css/colors/orange.css'%}" />
+
+    <!-- Modernizer -->
+    <script src="{%static 'js/modernizer.js'%}"></script>
+</head>
+
+<body>
+    <div id="loader">
+        <div id="status"></div>
+    </div>
+    <div id="site-header">
+        <header id="header" class="header-block-top">
+            <div class="container">
+                <div class="row">
+                    <div class="main-menu">
+                        <!-- navbar -->
+                        <nav class="navbar navbar-default" id="mainNav">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                    data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <div class="logo">
+                                    <a class="navbar-brand js-scroll-trigger logo-header" href="#">
+                                        <img src="{%static 'images/logo.png'%}" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div id="navbar" class="navbar-collapse collapse">
+                                <ul class="nav navbar-nav navbar-right">
+                                    <li class="active"><a href="#banner">Inicio</a></li>
+                                    <li><a href="#about">Sobre nosotros</a></li>
+                                    <li><a href="#menu">Menú</a></li>
+                                    <li><a href="#gallery">Galleria</a></li>
+                                    <li><a href="#blog">Novedades</a></li>
+                                    <li><a href="#reservation">Contacto</a></li>
+                                </ul>
+                            </div>
+                            <!-- end nav-collapse -->
+                        </nav>
+                        <!-- end navbar -->
+                    </div>
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container-fluid -->
+        </header>
+        <!-- end header -->
+    </div>
+    <!-- end site-header -->
+
+    <div id="banner" class="banner full-screen-mode parallax">
+        <div class="container pr">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="banner-static">
+                    <div class="banner-text">
+                        {% for titu in titulo %}
+                        <div class="banner-cell">
+                            <h1>{{titu.tituloPrincipal}} <span class="typer" id="some-id" data-delay="200"
+                                    data-delim=":" data-words="{{titu.palabrasCambiantes}}"
+                                    data-colors="red"></span><span class="cursor" data-cursorDisplay="_"
+                                    data-owner="some-id"></span></h1>
+                            <h2>{{titu.subtitulo}} </h2>
+                            <p>{{titu.subtituloTexto}}</p>
+                            <a href="#about">
+                                <div class="mouse"></div>
+                            </a>
+                        </div>
+                        {% endfor %}
+                        <!-- end banner-cell -->
+                    </div>
+                    <!-- end banner-text -->
+                </div>
+                <!-- end banner-static -->
+            </div>
+            <!-- end col -->
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end banner -->
+    {% for nosotros in sobreNosotros %}
+    {% if nosotros.seleccionado == True %}
+    <div id="about" class="about-main pad-top-100 pad-bottom-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                        <h2 class="block-title">{{nosotros.titulo}}</h2>
+                        <h3>{{nosotros.subtitulo}}</h3>
+                        <p>{{nosotros.contenido}}</p>
+                    </div>
+                </div>
+                <!-- end col -->
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                        <div class="about-images">
+
+
+                            <!-- CAMBIO PARA PRODUCCION -->
+                            <!-- Borrar las primeras 2 lineas y descomentar las segundas dos -->
+                            <img class="about-main" src="{%static 'images/about-main.jpg'%}" alt="About Main Image">
+                            <img class="about-inset" src="{%static 'images/about-inset.jpg'%}" alt="About Inset Image">
+                            <!--
+                                <img class="about-main" src="{{nosotros.imagenprincipal}}" alt="About Main Image">
+                                <img class="about-inset" src="{{nosotros.imagenSecundaria}}" alt="About Inset Image">
+                                -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+    <div class="special-menu pad-top-100 parallax">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                        <h2 class="block-title color-white text-center"> Today's Special </h2>
+                        <h5 class="title-caption text-center"> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                            sed do eiusm incididunt ut labore et dolore magna aliqua. Ut enim ad minim venia,nostrud
+                            exercitation ullamco. </h5>
+                    </div>
+                    <div class="special-box">
+                        <div id="owl-demo">
+                            {% for especial in especiales %}
+                            <div class="item item-type-zoom">
+                                <a href="#" class="item-hover">
+                                    <div class="item-info">
+                                        <div class="headline">
+                                            {{especial.titulo}}
+                                            <div class="line"></div>
+                                            <div class="dit-line">{{especial.contenido}}</div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="item-img">
+
+
+
+                                    <!-- CAMBIO PARA PRODUCCION -->
+                                    <!-- Borrar las primeras 5 lineas y descomentar la ultima -->
+                                    {% if especial.id == 1 %}
+                                    <img src="{%static 'images/special-menu-1.jpg'%}" alt="sp-menu">
+                                    {% endif %}
+                                    {% if especial.id == 2 %}
+                                    <img src="{%static 'images/special-menu-2.jpg'%}" alt="sp-menu">
+                                    {% endif %}
+                                    {% if especial.id == 3 %}
+                                    <img src="{%static 'images/special-menu-3.jpg'%}" alt="sp-menu">
+                                    {% endif %}
+                                    {% if especial.id == 4 %}
+                                    <img src="{%static 'images/special-menu-1.jpg'%}" alt="sp-menu">
+                                    {% endif %}
+                                    {% if especial.id == 5 %}
+                                    <img src="{%static 'images/special-menu-2.jpg'%}" alt="sp-menu">
+                                    {% endif %}
+                                    <!-- <img src="{{especial.imagen}}" alt="sp-menu"> -->
+
+
+
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <!-- end special-box -->
+                </div>
+                <!-- end col -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end special-menu -->
+
+    <div id="menu" class="menu-main pad-top-100 pad-bottom-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                        <h2 class="block-title text-center">
+                            Our Menu
+                        </h2>
+                        <p class="title-caption text-center">There are many variations of passages of Lorem Ipsum
+                            available, but the majority have suffered alteration in some form, by injected humour, or
+                            randomised words which don't look even slightly believable. </p>
+                    </div>
+                    <div class="tab-menu">
+                        <div class="slider slider-nav">
+                            <div class="tab-title-menu">
+                                <h2>STARTERS</h2>
+                                <p> <i class="flaticon-canape"></i> </p>
+                            </div>
+                            <div class="tab-title-menu">
+                                <h2>MAIN DISHES</h2>
+                                <p> <i class="flaticon-dinner"></i> </p>
+                            </div>
+                            <div class="tab-title-menu">
+                                <h2>DESERTS</h2>
+                                <p> <i class="flaticon-desert"></i> </p>
+                            </div>
+                            <div class="tab-title-menu">
+                                <h2>DRINKS</h2>
+                                <p> <i class="flaticon-coffee"></i> </p>
+                            </div>
+                        </div>
+
+
+
+
+
+                        <!-- MODIFICACION PARA SUBIR A PRODUCCION, SACAR TODAS LAS IMAGENES Y DESCOMENTAR LOS COMIDA.IMAGEN -->
+                        <div class="slider slider-single">
+                            <div>
+                                <!-- ENTRADAS -->
+                                {% for comida in menu %}
+                                {% if comida.tipo == 'Entradas' %}
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                                    <div class="offer-item">
+                                        <img src="{%static 'images/menu-item-thumbnail-01.jpg'%}" alt=""
+                                            class="img-responsive">
+                                        <!-- <img src="{{comida.imagen}}" alt="" class="img-responsive"> -->
+                                        <div>
+                                            <h3>{{comida.titulo}}</h3>
+                                            <p>
+                                                {{comida.descripcion}}
+                                            </p>
+                                            <p>
+                                                {{comida.descripcion2}}
+                                            </p>
+                                        </div>
+                                        <span class="offer-price">${{comida.precio}}</span>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                            <div>
+                                <!-- Plato Principal -->
+                                {% for comida in menu %}
+                                {% if comida.tipo == 'Plato Principal' %}
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                                    <div class="offer-item">
+                                        <img src="{%static 'images/menu-item-thumbnail-04.jpg'%}" alt=""
+                                            class="img-responsive">
+                                        <!-- <img src="{{comida.imagen}}" alt="" class="img-responsive"> -->
+                                        <div>
+                                            <h3>{{comida.titulo}}</h3>
+                                            <p>
+                                                {{comida.descripcion}}
+                                            </p>
+                                            <p>
+                                                {{comida.descripcion2}}
+                                            </p>
+                                        </div>
+                                        <span class="offer-price">${{comida.precio}}</span>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                            <div>
+                                <!-- POSTRES -->
+                                {% for comida in menu %}
+                                {% if comida.tipo == 'Postres' %}
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                                    <div class="offer-item">
+                                        <img src="{%static 'images/menu-item-thumbnail-07.jpg'%}" alt=""
+                                            class="img-responsive">
+                                        <!-- <img src="{{comida.imagen}}" alt="" class="img-responsive"> -->
+                                        <div>
+                                            <h3>{{comida.titulo}}</h3>
+                                            <p>
+                                                {{comida.descripcion}}
+                                            </p>
+                                            <p>
+                                                {{comida.descripcion2}}
+                                            </p>
+                                        </div>
+                                        <span class="offer-price">${{comida.precio}}</span>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                            <div>
+                                <!-- BEBIDAS -->
+                                {% for comida in menu %}
+                                {% if comida.tipo == 'Bebidas' %}
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                                    <div class="offer-item">
+                                        <img src="{%static 'images/menu-item-thumbnail-10.jpg'%}" alt=""
+                                            class="img-responsive">
+                                        <!-- <img src="{{comida.imagen}}" alt="" class="img-responsive"> -->
+                                        <div>
+                                            <h3>{{comida.titulo}}</h3>
+                                            <p>
+                                                {{comida.descripcion}}
+                                            </p>
+                                            <p>
+                                                {{comida.descripcion2}}
+                                            </p>
+                                        </div>
+                                        <span class="offer-price">${{comida.precio}}</span>
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end tab-menu -->
+                </div>
+                <!-- end col -->
+            </div>
+            <!-- end row -->
+        </div>
+        <!-- end container -->
+    </div>
+    <!-- end menu -->
+
+
+
+
+
+    <!-- PARALAX ENTRE MENU Y GALERIA -->
+    <div id="our_team" class="team-main pad-top-100 pad-bottom-100 parallax">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="gallery" class="gallery-main pad-top-100 pad-bottom-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    {% for foto in galeria %}
+                    <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                        <h2 class="block-title text-center">
+                            {{foto.titulo}}
+                        </h2>
+                        <p class="title-caption text-center">{{foto.descripcion}}</p>
+                    </div>
+
+
+
+
+                    <!-- CAMBIO PARA PRODUCCION -->
+                    <!-- Borrar el siguiente div entero y descomentar el siguiente -->
+                    <div class="gal-container clearfix">
+                        <div class="col-md-8 col-sm-12 co-xs-12 gal-item">
+                            <div class="box">
+                                <a href="#" data-toggle="modal" data-target="#1">
+                                    <img src="{%static 'images/gallery_01.jpg'%}" alt="" />
+                                </a>
+                                <div class="modal fade" id="1" tabindex="-1" role="dialog">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close"><span aria-hidden="true">×</span></button>
+                                            <div class="modal-body">
+                                                <img src="{%static 'images/gallery_01.jpg'%}" alt="" />
+                                            </div>
+                                            <div class="col-md-12 description">
+                                                <h4>This is the 1 one on my Gallery</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                            <div class="box">
+                                <a href="#" data-toggle="modal" data-target="#2">
+                                    <img src="{%static 'images/gallery_02.jpg'%}" alt="" />
+                                </a>
+                                <div class="modal fade" id="2" tabindex="-1" role="dialog">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close"><span aria-hidden="true">×</span></button>
+                                            <div class="modal-body">
+                                                <img src="{%static 'images/gallery_02.jpg'%}" alt="" />
+                                            </div>
+                                            <div class="col-md-12 description">
+                                                <h4>This is the 2 one on my Gallery</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                            <div class="box">
+                                <a href="#" data-toggle="modal" data-target="#3">
+                                    <img src="{%static 'images/gallery_03.jpg'%}" alt="" />
+                                </a>
+                                <div class="modal fade" id="3" tabindex="-1" role="dialog">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close"><span aria-hidden="true">×</span></button>
+                                            <div class="modal-body">
+                                                <img src="{%static 'images/gallery_03.jpg'%}" alt="" />
+                                            </div>
+                                            <div class="col-md-12 description">
+                                                <h4>This is the 3 one on my Gallery</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                            <div class="box">
+                                <a href="#" data-toggle="modal" data-target="#4">
+                                    <img src="{%static 'images/gallery_04.jpg'%}" alt="" />
+                                </a>
+                                <div class="modal fade" id="4" tabindex="-1" role="dialog">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close"><span aria-hidden="true">×</span></button>
+                                            <div class="modal-body">
+                                                <img src="{%static 'images/gallery_04.jpg'%}" alt="" />
+                                            </div>
+                                            <div class="col-md-12 description">
+                                                <h4>This is the 4 one on my Gallery</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                            <div class="box">
+                                <a href="#" data-toggle="modal" data-target="#5">
+                                    <img src="{%static 'images/gallery_05.jpg'%}" alt="" />
+                                </a>
+                                <div class="modal fade" id="5" tabindex="-1" role="dialog">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close"><span aria-hidden="true">×</span></button>
+                                            <div class="modal-body">
+                                                <img src="{%static 'images/gallery_05.jpg'%}" alt="" />
+                                            </div>
+                                            <div class="col-md-12 description">
+                                                <h4>This is the 5 one on my Gallery</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                            <div class="box">
+                                <a href="#" data-toggle="modal" data-target="#9">
+                                    <img src="{%static 'images/gallery_06.jpg'%}" alt="" />
+                                </a>
+                                <div class="modal fade" id="9" tabindex="-1" role="dialog">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close"><span aria-hidden="true">×</span></button>
+                                            <div class="modal-body">
+                                                <img src="{%static 'images/gallery_06.jpg'%}" alt="" />
+                                            </div>
+                                            <div class="col-md-12 description">
+                                                <h4>This is the 6 one on my Gallery</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-8 col-sm-12 co-xs-12 gal-item">
+                            <div class="box">
+                                <a href="#" data-toggle="modal" data-target="#10">
+                                    <img src="{%static 'images/gallery_07.jpg'%}" alt="" />
+                                </a>
+                                <div class="modal fade" id="10" tabindex="-1" role="dialog">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close"><span aria-hidden="true">×</span></button>
+                                            <div class="modal-body">
+                                                <img src="{%static 'images/gallery_07.jpg'%}" alt="" />
+                                            </div>
+                                            <div class="col-md-12 description">
+                                                <h4>This is the 7 one on my Gallery</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                            <div class="box">
+                                <a href="#" data-toggle="modal" data-target="#11">
+                                    <img src="{%static 'images/gallery_08.jpg'%}" alt="" />
+                                </a>
+                                <div class="modal fade" id="11" tabindex="-1" role="dialog">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close"><span aria-hidden="true">×</span></button>
+                                            <div class="modal-body">
+                                                <img src="{%static 'images/gallery_08.jpg'%}" alt="" />
+                                            </div>
+                                            <div class="col-md-12 description">
+                                                <h4>This is the 8 one on my Gallery</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                            <div class="box">
+                                <a href="#" data-toggle="modal" data-target="#12">
+                                    <img src="{%static 'images/gallery_09.jpg'%}" alt="" />
+                                </a>
+                                <div class="modal fade" id="12" tabindex="-1" role="dialog">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close"><span aria-hidden="true">×</span></button>
+                                            <div class="modal-body">
+                                                <img src="{%static 'images/gallery_09.jpg'%}" alt="" />
+                                            </div>
+                                            <div class="col-md-12 description">
+                                                <h4>This is the 9 one on my Gallery</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                            <div class="box">
+                                <a href="#" data-toggle="modal" data-target="#13">
+                                    <img src="{%static 'images/gallery_10.jpg'%}" alt="" />
+                                </a>
+                                <div class="modal fade" id="13" tabindex="-1" role="dialog">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                aria-label="Close"><span aria-hidden="true">×</span></button>
+                                            <div class="modal-body">
+                                                <img src="{%static 'images/gallery_10.jpg'%}" alt="" />
+                                            </div>
+                                            <div class="col-md-12 description">
+                                                <h4>This is the 10 one on my Gallery</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="gal-container clearfix">
+                            <div class="col-md-8 col-sm-12 co-xs-12 gal-item">
+                                <div class="box">
+                                    <a href="#" data-toggle="modal" data-target="#1">
+                                        <img src="{{foto.imagen_1}}" alt="" />
+                                    </a>
+                                    <div class="modal fade" id="1" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                <div class="modal-body">
+                                                    <img src="{{foto.imagen_1}}" alt="" />
+                                                </div>
+                                                <div class="col-md-12 description">
+                                                    <h4>{{foto.imagen_1_descripcion}}</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                                <div class="box">
+                                    <a href="#" data-toggle="modal" data-target="#2">
+                                        <img src="{{foto.imagen_2}}" alt="" />
+                                    </a>
+                                    <div class="modal fade" id="2" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                <div class="modal-body">
+                                                    <img src="{{foto.imagen_2}}" alt="" />
+                                                </div>
+                                                <div class="col-md-12 description">
+                                                    <h4>{{foto.imagen_2_descripcion}}</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                                <div class="box">
+                                    <a href="#" data-toggle="modal" data-target="#3">
+                                        <img src="{{foto.imagen_3}}" alt="" />
+                                    </a>
+                                    <div class="modal fade" id="3" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                <div class="modal-body">
+                                                    <img src="{{foto.imagen_3}}" alt="" />
+                                                </div>
+                                                <div class="col-md-12 description">
+                                                    <h4>{{foto.imagen_3_descripcion}}</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                                <div class="box">
+                                    <a href="#" data-toggle="modal" data-target="#4">
+                                        <img src="{{foto.imagen_4}}" alt="" />
+                                    </a>
+                                    <div class="modal fade" id="4" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                <div class="modal-body">
+                                                    <img src="{{foto.imagen_4}}" alt="" />
+                                                </div>
+                                                <div class="col-md-12 description">
+                                                    <h4>{{foto.imagen_4_descripcion}}</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                                <div class="box">
+                                    <a href="#" data-toggle="modal" data-target="#5">
+                                        <img src="{{foto.imagen_5}}" alt="" />
+                                    </a>
+                                    <div class="modal fade" id="5" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                <div class="modal-body">
+                                                    <img src="{{foto.imagen_5}}" alt="" />
+                                                </div>
+                                                <div class="col-md-12 description">
+                                                    <h4>{{foto.imagen_5_descripcion}}</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                                <div class="box">
+                                    <a href="#" data-toggle="modal" data-target="#9">
+                                        <img src="{{foto.imagen_6}}" alt="" />
+                                    </a>
+                                    <div class="modal fade" id="9" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                <div class="modal-body">
+                                                    <img src="{{foto.imagen_6}}" alt="" />
+                                                </div>
+                                                <div class="col-md-12 description">
+                                                    <h4>{{foto.imagen_6_descripcion}}</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-sm-12 co-xs-12 gal-item">
+                                <div class="box">
+                                    <a href="#" data-toggle="modal" data-target="#10">
+                                        <img src="{{foto.imagen_7}}" alt="" />
+                                    </a>
+                                    <div class="modal fade" id="10" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                <div class="modal-body">
+                                                    <img src="{{foto.imagen_7}}" alt="" />
+                                                </div>
+                                                <div class="col-md-12 description">
+                                                    <h4>{{foto.imagen_7_descripcion}}</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                                <div class="box">
+                                    <a href="#" data-toggle="modal" data-target="#11">
+                                        <img src="{{foto.imagen_8}}" alt="" />
+                                    </a>
+                                    <div class="modal fade" id="11" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                <div class="modal-body">
+                                                    <img src="{{foto.imagen_8}}" alt="" />
+                                                </div>
+                                                <div class="col-md-12 description">
+                                                    <h4>{{foto.imagen_8_descripcion}}</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                                <div class="box">
+                                    <a href="#" data-toggle="modal" data-target="#12">
+                                        <img src="{{foto.imagen_9}}" alt="" />
+                                    </a>
+                                    <div class="modal fade" id="12" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                <div class="modal-body">
+                                                    <img src="{{foto.imagen_9}}" alt="" />
+                                                </div>
+                                                <div class="col-md-12 description">
+                                                    <h4>{{foto.imagen_9_descripcion}}</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
+                                <div class="box">
+                                    <a href="#" data-toggle="modal" data-target="#13">
+                                        <img src="{{foto.imagen_10}}" alt="" />
+                                    </a>
+                                    <div class="modal fade" id="13" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                <div class="modal-body">
+                                                    <img src="{{foto.imagen_10}}" alt="" />
+                                                </div>
+                                                <div class="col-md-12 description">
+                                                    <h4>{{foto.imagen_10_descripcion}}</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    {% endfor %}
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="blog" class="blog-main pad-top-100 pad-bottom-100 parallax">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <h2 class="block-title text-center">
+                        NOVEDADES
+                    </h2>
+                    <div class="blog-box clearfix">
+                        {% for novedad in novedades %}
+                        {% if novedad.activado == True %}
+                        <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="blog-block">
+                                    <div class="blog-img-box">
+
+
+
+
+                                        <!-- CAMBIO A PRODUCCION -->
+                                        <!-- Borrar la primer imagen y descomentar la segunda -->
+
+                                        <img src="{%static 'images/featured-image-01.jpg'%}" alt="" />
+                                        <!-- <img src="{{novedades.imagen}}" alt="" /> -->
+
+
+
+
+
+
+
+                                    </div>
+                                    <div class="blog-dit">
+                                        <p><span>{{novedad.creado}}</span></p>
+                                        <h2>{{novedad.titulo}}</h2>
+                                        <h5>{{novedad.contenido}}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end col -->
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="gtco-section" id="contacto-form">
+        <div class="gtco-container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-md-6 animate-box">
+                        <h3>Ponte en contacto!</h3>
+                        <form action="#">
+                            <div class="row form-group">
+                                <div class="col-md-12">
+                                    <label class="sr-only" for="name"></label>
+                                    <input type="text" id="name" class="form-control" placeholder="Nombre completo">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-12">
+                                    <label class="sr-only" for="email"></label>
+                                    <input type="text" id="email" class="form-control" placeholder="Email de contacto">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-12">
+                                    <label class="sr-only" for="message"></label>
+                                    <textarea name="message" id="message" cols="30" rows="10" class="form-control"
+                                        placeholder="Dejanos tu mensaje"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Enviar!" class="btn btn-primary">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-5 col-md-push-1 animate-box">
+                        <div class="gtco-contact-info" style="font-size: larger;">
+                            <h3>Contact Information</h3>
+                            <ul>
+                                {% for contacto in contactos %}
+                                    <li><i class="fas fa-map-marker-alt"></i> &nbsp;&nbsp;&nbsp; {{contacto.direccion}},
+                                        <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Valencia, España
+                                    </li>
+                                    <li><i class="fas fa-phone"></i>&nbsp;&nbsp;&nbsp;<a
+                                            href="tel://1234567920">&nbsp;&nbsp;&nbsp;{{contacto.telefono}}</a></li>
+                                    <li><i class="fas fa-envelope"></i>&nbsp;&nbsp;&nbsp;<a
+                                            href="mailto:info@yoursite.com">&nbsp;&nbsp;&nbsp;{{contacto.email}}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="footer" class="footer-main">
+        <div class="footer-news pad-top-100 pad-bottom-70 parallax">
+            <div class="container">
+                <div class="row">
+                </div>
+
+            </div>
+        </div>
+        <!-- end footer-news -->
+        <div class="footer-box pad-top-70">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-in-main">
+                        <div class="footer-logo">
+                            <div class="text-center">
+                                <img src="{%static 'images/logo.png'%}" alt="" />
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="footer-box-a">
+                                <h3>Redes sociales</h3>
+                                {% for redes in redesSociales %}
+                                <p>{{redes.contenido}}</p>
+                                <ul class="socials-box footer-socials pull-left">
+                                    <li>
+                                        <a href="{{redes.facebook}}">
+                                            <div class="social-circle-border"><i class="fa  fa-facebook"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{redes.twitter}}">
+                                            <div class="social-circle-border"><i class="fa fa-twitter"></i></div>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{redes.instagram}}">
+                                            <div class="social-circle-border"><i class="fa fa-instagram"></i></div>
+                                        </a>
+                                    </li>
+                                </ul>
+                                {% endfor %}
+                            </div>
+                            <!-- end footer-box-a -->
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="footer-box-c">
+                                <h3>Contacto</h3>
+                                {% for contacto in contactos %}
+                                <p>
+                                    <i class="fa fa-map-signs" aria-hidden="true"></i>
+                                    <span>{{contacto.direccion}}</span>
+                                </p>
+                                <p>
+                                    <i class="fa fa-mobile" aria-hidden="true"></i>
+                                    <span>{{contacto.telefono}}</span>
+                                </p>
+                                <p>
+                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                    <span><a href="#">{{contacto.email}}</a></span>
+                                </p>
+                                {% endfor %}
+                            </div>
+                            <!-- end footer-box-c -->
+                        </div>
+                        <!-- end col -->
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="footer-box-d">
+                                <h3>Opening Hours</h3>
+                                {% for horario in horarios %}
+                                    <ul>
+                                        <li>
+                                            <p>Lunes:<span> {{horario.lunes}}</span>&nbsp;&nbsp;&nbsp;Martes:<span> {{horario.martes}}</span></p>
+                                            <p>Miercoles:<span> {{horario.miercoles}}</span>&nbsp;&nbsp;&nbsp;Jueves:<span> {{horario.jueves}}</span></p>
+                                            <p>Viernes:<span> {{horario.viernes}}</span></p>
+                                            <p>Sabado:<span> {{horario.sabado}}</span>&nbsp;&nbsp;&nbsp;Domingo:<span> {{horario.domingo}}</span></p>
+                                        </li>
+                                    </ul>
+                                {% endfor %}
+                            </div>
+                            <!-- end footer-box-d -->
+                        </div>
+                        <!-- end col -->
+                    </div>
+                    <!-- end footer-in-main -->
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+            <div id="copyright" class="copyright-main">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <h6 class="copy-title"> Copyright &copy; 2017 Food Funday is powered by <a href="#"
+                                    target="_blank"></a> </h6>
+                        </div>
+                    </div>
+                    <!-- end row -->
+                </div>
+                <!-- end container -->
+            </div>
+            <!-- end copyright-main -->
+        </div>
+        <!-- end footer-box -->
+    </div>
+    <!-- end footer-main -->
+
+    <a href="#" class="scrollup" style="display: none;">Scroll</a>
+
+
+
+    <!-- ALL JS FILES -->
+    <script src="{% static 'js/all.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <!-- ALL PLUGINS -->
+    <script src="{% static 'js/custom.js' %}"></script>
+    <script src="https://kit.fontawesome.com/b29381595a.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
