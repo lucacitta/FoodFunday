@@ -22,8 +22,8 @@ class SobreNosotros(models.Model):
     subtitulo = models.CharField(max_length=100)
     contenido = models.TextField(max_length=1000)
     seleccionado = models.BooleanField()
-    imagenPrincipal = models.ImageField()
-    imagenSecundaria = models.ImageField()
+    imagenPrincipal = models.ImageField(upload_to='appPrincipal/static/img')
+    imagenSecundaria = models.ImageField(upload_to='appPrincipal/static/img')
 
     class Meta:
         verbose_name= 'Sobre Nosotro'
@@ -34,7 +34,7 @@ class SobreNosotros(models.Model):
 class Especiales(models.Model):
     titulo = models.CharField(max_length=80)
     contenido = models.CharField(max_length=300)
-    imagen = models.ImageField()
+    imagen = models.ImageField(upload_to='appPrincipal/static/img')
 
     class Meta:
         verbose_name= 'Especiale'
@@ -61,8 +61,8 @@ class Menu(models.Model):
     titulo=models.CharField(max_length=80)
     descripcion=models.CharField(max_length=45)
     descripcion2=models.CharField(max_length=45)
-    precio=models.IntegerField()
-    imagen=models.ImageField()
+    precio=models.DecimalField(decimal_places=2,max_digits=6)
+    imagen=models.ImageField(upload_to='appPrincipal/static/img')
     tipo=models.CharField(max_length=40, choices=elecciones)
 
     def admin_photo(self):
@@ -79,34 +79,34 @@ class Menu(models.Model):
 class Galeria(models.Model):
     titulo=models.CharField(max_length=20)
     descripcion=models.CharField(max_length=200)
-    imagen_1=models.ImageField()
+    imagen_1=models.ImageField(upload_to='appPrincipal/static/img')
     imagen_1_Descripcion=models.CharField(max_length=40)
 
-    imagen_2=models.ImageField()
+    imagen_2=models.ImageField(upload_to='appPrincipal/static/img')
     imagen_2_Descripcion=models.CharField(max_length=40)
 
-    imagen_3=models.ImageField()
+    imagen_3=models.ImageField(upload_to='appPrincipal/static/img')
     imagen_3_Descripcion=models.CharField(max_length=40)
 
-    imagen_4=models.ImageField()
+    imagen_4=models.ImageField(upload_to='appPrincipal/static/img')
     imagen_4_Descripcion=models.CharField(max_length=40)
 
-    imagen_5=models.ImageField()
+    imagen_5=models.ImageField(upload_to='appPrincipal/static/img')
     imagen_5_Descripcion=models.CharField(max_length=40)
 
-    imagen_6=models.ImageField()
+    imagen_6=models.ImageField(upload_to='appPrincipal/static/img')
     imagen_6_Descripcion=models.CharField(max_length=40)
 
-    imagen_7=models.ImageField()
+    imagen_7=models.ImageField(upload_to='appPrincipal/static/img')
     imagen_7_Descripcion=models.CharField(max_length=40)
 
-    imagen_8=models.ImageField()
+    imagen_8=models.ImageField(upload_to='appPrincipal/static/img')
     imagen_8_Descripcion=models.CharField(max_length=40)
 
-    imagen_9=models.ImageField()
+    imagen_9=models.ImageField(upload_to='appPrincipal/static/img')
     imagen_9_Descripcion=models.CharField(max_length=40)
 
-    imagen_10=models.ImageField()
+    imagen_10=models.ImageField(upload_to='appPrincipal/static/img')
     imagen_10_Descripcion=models.CharField(max_length=40)
 
     class Meta:
@@ -119,7 +119,7 @@ class Novedades(models.Model):
     titulo= models.CharField(max_length=25)
     contenido= models.CharField(max_length=200)
     creado= models.DateTimeField(auto_now_add=True)
-    imagen= models.ImageField()
+    imagen= models.ImageField(upload_to='appPrincipal/static/img')
     activado= models.BooleanField()
 
     class Meta:

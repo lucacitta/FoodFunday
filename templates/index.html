@@ -16,6 +16,7 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="image" property="og:image" content="{% static 'images/miniatura.png' %}">
 
     <!-- Site Icons -->
     <link rel="shortcut icon" href="{%static 'images/favicon.ico'%}" type="image/x-icon" />
@@ -95,6 +96,28 @@
                                     data-owner="some-id"></span></h1>
                             <h2>{{titu.subtitulo}} </h2>
                             <p>{{titu.subtituloTexto}}</p>
+                                {% if 'valido' in request.GET %}
+                                <div class="row no-gutters" style="justify-content: center";>
+                                    <div class="col-lg-16 col-md-12" >
+                                        <div class="alert-success shadow my-3" role="alert" style="border-radius: 0px">
+                                            <div class="row">
+                                                <div class="col-2">
+                                                    <div class="text-center" style="background:#155724">
+                                                        <svg width="3em" height="3em" style="color:#D4EDDA" viewBox="0 0 16 16" class="m-1 bi bi-shield-fill-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                        <path fill-rule="evenodd" d="M8 .5c-.662 0-1.77.249-2.813.525a61.11 61.11 0 0 0-2.772.815 1.454 1.454 0 0 0-1.003 1.184c-.573 4.197.756 7.307 2.368 9.365a11.192 11.192 0 0 0 2.417 2.3c.371.256.715.451 1.007.586.27.124.558.225.796.225s.527-.101.796-.225c.292-.135.636-.33 1.007-.586a11.191 11.191 0 0 0 2.418-2.3c1.611-2.058 2.94-5.168 2.367-9.365a1.454 1.454 0 0 0-1.003-1.184 61.09 61.09 0 0 0-2.772-.815C9.77.749 8.663.5 8 .5zm2.854 6.354a.5.5 0 0 0-.708-.708L7.5 8.793 6.354 7.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+                                                        </svg>
+                                                    </div>
+                                                </div>
+                                                <div class="alert col-10 my-auto">
+                                                    <div class="row" >
+                                                        <p style="font-size:18px;color:black" class="mb-0 font-weight-light"><b class="mr-1">Gracias por tu mensaje.</b>Todo salio perfectamente, recibiras un email de confirmacion.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endif %}
                             <a href="#about">
                                 <div class="mouse"></div>
                             </a>
@@ -127,16 +150,8 @@
                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                     <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
                         <div class="about-images">
-
-
-                            <!-- CAMBIO PARA PRODUCCION -->
-                            <!-- Borrar las primeras 2 lineas y descomentar las segundas dos -->
-                            <img class="about-main" src="{%static 'images/about-main.jpg'%}" alt="About Main Image">
-                            <img class="about-inset" src="{%static 'images/about-inset.jpg'%}" alt="About Inset Image">
-                            <!--
-                                <img class="about-main" src="{{nosotros.imagenprincipal}}" alt="About Main Image">
-                                <img class="about-inset" src="{{nosotros.imagenSecundaria}}" alt="About Inset Image">
-                                -->
+                                <img class="about-main" src="{{nosotros.imagenPrincipal.url}}" alt="About Main Image">
+                                <img class="about-inset" src="{{nosotros.imagenSecundaria.url}}" alt="About Inset Image">
                         </div>
                     </div>
                 </div>
@@ -150,7 +165,7 @@
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <div class="wow fadeIn" data-wow-duration="1s" data-wow-delay="0.1s">
-                        <h2 class="block-title color-white text-center"> Today's Special </h2>
+                        <h2 class="block-title color-white text-center"> Nuestros Especiales </h2>
                         <h5 class="title-caption text-center"> Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                             sed do eiusm incididunt ut labore et dolore magna aliqua. Ut enim ad minim venia,nostrud
                             exercitation ullamco. </h5>
@@ -158,8 +173,8 @@
                     <div class="special-box">
                         <div id="owl-demo">
                             {% for especial in especiales %}
-                            <div class="item item-type-zoom">
-                                <a href="#" class="item-hover">
+                                <div class="item item-type-zoom" style="width: 30rem; height: 30rem;">
+                                    <div href="#" class="item-hover" style="display: flex; justify-content: center;">
                                     <div class="item-info">
                                         <div class="headline">
                                             {{especial.titulo}}
@@ -167,34 +182,11 @@
                                             <div class="dit-line">{{especial.contenido}}</div>
                                         </div>
                                     </div>
-                                </a>
-                                <div class="item-img">
-
-
-
-                                    <!-- CAMBIO PARA PRODUCCION -->
-                                    <!-- Borrar las primeras 5 lineas y descomentar la ultima -->
-                                    {% if especial.id == 1 %}
-                                    <img src="{%static 'images/special-menu-1.jpg'%}" alt="sp-menu">
-                                    {% endif %}
-                                    {% if especial.id == 2 %}
-                                    <img src="{%static 'images/special-menu-2.jpg'%}" alt="sp-menu">
-                                    {% endif %}
-                                    {% if especial.id == 3 %}
-                                    <img src="{%static 'images/special-menu-3.jpg'%}" alt="sp-menu">
-                                    {% endif %}
-                                    {% if especial.id == 4 %}
-                                    <img src="{%static 'images/special-menu-1.jpg'%}" alt="sp-menu">
-                                    {% endif %}
-                                    {% if especial.id == 5 %}
-                                    <img src="{%static 'images/special-menu-2.jpg'%}" alt="sp-menu">
-                                    {% endif %}
-                                    <!-- <img src="{{especial.imagen}}" alt="sp-menu"> -->
-
-
-
+                                    </div>
+                                    <div class="item-img">
+                                        <img src="{{especial.imagen.url}}" alt="sp-menu" style="width: 29.2rem; height: 29.2rem;">
+                                    </div>
                                 </div>
-                            </div>
                             {% endfor %}
                         </div>
                     </div>
@@ -223,28 +215,22 @@
                     <div class="tab-menu">
                         <div class="slider slider-nav">
                             <div class="tab-title-menu">
-                                <h2>STARTERS</h2>
+                                <h2>ENTRADADS</h2>
                                 <p> <i class="flaticon-canape"></i> </p>
                             </div>
                             <div class="tab-title-menu">
-                                <h2>MAIN DISHES</h2>
+                                <h2>PLATOS PRINCIPALES</h2>
                                 <p> <i class="flaticon-dinner"></i> </p>
                             </div>
                             <div class="tab-title-menu">
-                                <h2>DESERTS</h2>
+                                <h2>POSTRES</h2>
                                 <p> <i class="flaticon-desert"></i> </p>
                             </div>
                             <div class="tab-title-menu">
-                                <h2>DRINKS</h2>
+                                <h2>BEBIDAS</h2>
                                 <p> <i class="flaticon-coffee"></i> </p>
                             </div>
                         </div>
-
-
-
-
-
-                        <!-- MODIFICACION PARA SUBIR A PRODUCCION, SACAR TODAS LAS IMAGENES Y DESCOMENTAR LOS COMIDA.IMAGEN -->
                         <div class="slider slider-single">
                             <div>
                                 <!-- ENTRADAS -->
@@ -252,9 +238,7 @@
                                 {% if comida.tipo == 'Entradas' %}
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
                                     <div class="offer-item">
-                                        <img src="{%static 'images/menu-item-thumbnail-01.jpg'%}" alt=""
-                                            class="img-responsive">
-                                        <!-- <img src="{{comida.imagen}}" alt="" class="img-responsive"> -->
+                                        <img src="{{comida.imagen.url}}" alt="" class="img-responsive">
                                         <div>
                                             <h3>{{comida.titulo}}</h3>
                                             <p>
@@ -264,7 +248,7 @@
                                                 {{comida.descripcion2}}
                                             </p>
                                         </div>
-                                        <span class="offer-price">${{comida.precio}}</span>
+                                        <span class="offer-price">€{{comida.precio}}</span>
                                     </div>
                                 </div>
                                 {% endif %}
@@ -276,9 +260,7 @@
                                 {% if comida.tipo == 'Plato Principal' %}
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
                                     <div class="offer-item">
-                                        <img src="{%static 'images/menu-item-thumbnail-04.jpg'%}" alt=""
-                                            class="img-responsive">
-                                        <!-- <img src="{{comida.imagen}}" alt="" class="img-responsive"> -->
+                                        <img src="{{comida.imagen.url}}" alt="" class="img-responsive">
                                         <div>
                                             <h3>{{comida.titulo}}</h3>
                                             <p>
@@ -288,7 +270,7 @@
                                                 {{comida.descripcion2}}
                                             </p>
                                         </div>
-                                        <span class="offer-price">${{comida.precio}}</span>
+                                        <span class="offer-price">€{{comida.precio}}</span>
                                     </div>
                                 </div>
                                 {% endif %}
@@ -300,9 +282,7 @@
                                 {% if comida.tipo == 'Postres' %}
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
                                     <div class="offer-item">
-                                        <img src="{%static 'images/menu-item-thumbnail-07.jpg'%}" alt=""
-                                            class="img-responsive">
-                                        <!-- <img src="{{comida.imagen}}" alt="" class="img-responsive"> -->
+                                        <img src="{{comida.imagen.url}}" alt="" class="img-responsive">
                                         <div>
                                             <h3>{{comida.titulo}}</h3>
                                             <p>
@@ -312,7 +292,7 @@
                                                 {{comida.descripcion2}}
                                             </p>
                                         </div>
-                                        <span class="offer-price">${{comida.precio}}</span>
+                                        <span class="offer-price">€{{comida.precio}}</span>
                                     </div>
                                 </div>
                                 {% endif %}
@@ -324,9 +304,7 @@
                                 {% if comida.tipo == 'Bebidas' %}
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
                                     <div class="offer-item">
-                                        <img src="{%static 'images/menu-item-thumbnail-10.jpg'%}" alt=""
-                                            class="img-responsive">
-                                        <!-- <img src="{{comida.imagen}}" alt="" class="img-responsive"> -->
+                                        <img src="{{comida.imagen.url}}" alt="" class="img-responsive" style='height:156.675px;'>
                                         <div>
                                             <h3>{{comida.titulo}}</h3>
                                             <p>
@@ -336,7 +314,7 @@
                                                 {{comida.descripcion2}}
                                             </p>
                                         </div>
-                                        <span class="offer-price">${{comida.precio}}</span>
+                                        <span class="offer-price">€{{comida.precio}}</span>
                                     </div>
                                 </div>
                                 {% endif %}
@@ -380,229 +358,11 @@
                         </h2>
                         <p class="title-caption text-center">{{foto.descripcion}}</p>
                     </div>
-
-
-
-
-                    <!-- CAMBIO PARA PRODUCCION -->
-                    <!-- Borrar el siguiente div entero y descomentar el siguiente -->
                     <div class="gal-container clearfix">
-                        <div class="col-md-8 col-sm-12 co-xs-12 gal-item">
-                            <div class="box">
-                                <a href="#" data-toggle="modal" data-target="#1">
-                                    <img src="{%static 'images/gallery_01.jpg'%}" alt="" />
-                                </a>
-                                <div class="modal fade" id="1" tabindex="-1" role="dialog">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                aria-label="Close"><span aria-hidden="true">×</span></button>
-                                            <div class="modal-body">
-                                                <img src="{%static 'images/gallery_01.jpg'%}" alt="" />
-                                            </div>
-                                            <div class="col-md-12 description">
-                                                <h4>This is the 1 one on my Gallery</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
-                            <div class="box">
-                                <a href="#" data-toggle="modal" data-target="#2">
-                                    <img src="{%static 'images/gallery_02.jpg'%}" alt="" />
-                                </a>
-                                <div class="modal fade" id="2" tabindex="-1" role="dialog">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                aria-label="Close"><span aria-hidden="true">×</span></button>
-                                            <div class="modal-body">
-                                                <img src="{%static 'images/gallery_02.jpg'%}" alt="" />
-                                            </div>
-                                            <div class="col-md-12 description">
-                                                <h4>This is the 2 one on my Gallery</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
-                            <div class="box">
-                                <a href="#" data-toggle="modal" data-target="#3">
-                                    <img src="{%static 'images/gallery_03.jpg'%}" alt="" />
-                                </a>
-                                <div class="modal fade" id="3" tabindex="-1" role="dialog">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                aria-label="Close"><span aria-hidden="true">×</span></button>
-                                            <div class="modal-body">
-                                                <img src="{%static 'images/gallery_03.jpg'%}" alt="" />
-                                            </div>
-                                            <div class="col-md-12 description">
-                                                <h4>This is the 3 one on my Gallery</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
-                            <div class="box">
-                                <a href="#" data-toggle="modal" data-target="#4">
-                                    <img src="{%static 'images/gallery_04.jpg'%}" alt="" />
-                                </a>
-                                <div class="modal fade" id="4" tabindex="-1" role="dialog">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                aria-label="Close"><span aria-hidden="true">×</span></button>
-                                            <div class="modal-body">
-                                                <img src="{%static 'images/gallery_04.jpg'%}" alt="" />
-                                            </div>
-                                            <div class="col-md-12 description">
-                                                <h4>This is the 4 one on my Gallery</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
-                            <div class="box">
-                                <a href="#" data-toggle="modal" data-target="#5">
-                                    <img src="{%static 'images/gallery_05.jpg'%}" alt="" />
-                                </a>
-                                <div class="modal fade" id="5" tabindex="-1" role="dialog">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                aria-label="Close"><span aria-hidden="true">×</span></button>
-                                            <div class="modal-body">
-                                                <img src="{%static 'images/gallery_05.jpg'%}" alt="" />
-                                            </div>
-                                            <div class="col-md-12 description">
-                                                <h4>This is the 5 one on my Gallery</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
-                            <div class="box">
-                                <a href="#" data-toggle="modal" data-target="#9">
-                                    <img src="{%static 'images/gallery_06.jpg'%}" alt="" />
-                                </a>
-                                <div class="modal fade" id="9" tabindex="-1" role="dialog">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                aria-label="Close"><span aria-hidden="true">×</span></button>
-                                            <div class="modal-body">
-                                                <img src="{%static 'images/gallery_06.jpg'%}" alt="" />
-                                            </div>
-                                            <div class="col-md-12 description">
-                                                <h4>This is the 6 one on my Gallery</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-8 col-sm-12 co-xs-12 gal-item">
-                            <div class="box">
-                                <a href="#" data-toggle="modal" data-target="#10">
-                                    <img src="{%static 'images/gallery_07.jpg'%}" alt="" />
-                                </a>
-                                <div class="modal fade" id="10" tabindex="-1" role="dialog">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                aria-label="Close"><span aria-hidden="true">×</span></button>
-                                            <div class="modal-body">
-                                                <img src="{%static 'images/gallery_07.jpg'%}" alt="" />
-                                            </div>
-                                            <div class="col-md-12 description">
-                                                <h4>This is the 7 one on my Gallery</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
-                            <div class="box">
-                                <a href="#" data-toggle="modal" data-target="#11">
-                                    <img src="{%static 'images/gallery_08.jpg'%}" alt="" />
-                                </a>
-                                <div class="modal fade" id="11" tabindex="-1" role="dialog">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                aria-label="Close"><span aria-hidden="true">×</span></button>
-                                            <div class="modal-body">
-                                                <img src="{%static 'images/gallery_08.jpg'%}" alt="" />
-                                            </div>
-                                            <div class="col-md-12 description">
-                                                <h4>This is the 8 one on my Gallery</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
-                            <div class="box">
-                                <a href="#" data-toggle="modal" data-target="#12">
-                                    <img src="{%static 'images/gallery_09.jpg'%}" alt="" />
-                                </a>
-                                <div class="modal fade" id="12" tabindex="-1" role="dialog">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                aria-label="Close"><span aria-hidden="true">×</span></button>
-                                            <div class="modal-body">
-                                                <img src="{%static 'images/gallery_09.jpg'%}" alt="" />
-                                            </div>
-                                            <div class="col-md-12 description">
-                                                <h4>This is the 9 one on my Gallery</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
-                            <div class="box">
-                                <a href="#" data-toggle="modal" data-target="#13">
-                                    <img src="{%static 'images/gallery_10.jpg'%}" alt="" />
-                                </a>
-                                <div class="modal fade" id="13" tabindex="-1" role="dialog">
-                                    <div class="modal-dialog" role="document">
-                                        <div class="modal-content">
-                                            <button type="button" class="close" data-dismiss="modal"
-                                                aria-label="Close"><span aria-hidden="true">×</span></button>
-                                            <div class="modal-body">
-                                                <img src="{%static 'images/gallery_10.jpg'%}" alt="" />
-                                            </div>
-                                            <div class="col-md-12 description">
-                                                <h4>This is the 10 one on my Gallery</h4>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="gal-container clearfix">
                             <div class="col-md-8 col-sm-12 co-xs-12 gal-item">
                                 <div class="box">
                                     <a href="#" data-toggle="modal" data-target="#1">
-                                        <img src="{{foto.imagen_1}}" alt="" />
+                                        <img src="{{foto.imagen_1.url}}" alt="" />
                                     </a>
                                     <div class="modal fade" id="1" tabindex="-1" role="dialog">
                                         <div class="modal-dialog" role="document">
@@ -610,7 +370,7 @@
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close"><span aria-hidden="true">×</span></button>
                                                 <div class="modal-body">
-                                                    <img src="{{foto.imagen_1}}" alt="" />
+                                                    <img src="{{foto.imagen_1.url}}" alt="" />
                                                 </div>
                                                 <div class="col-md-12 description">
                                                     <h4>{{foto.imagen_1_descripcion}}</h4>
@@ -623,7 +383,7 @@
                             <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
                                 <div class="box">
                                     <a href="#" data-toggle="modal" data-target="#2">
-                                        <img src="{{foto.imagen_2}}" alt="" />
+                                        <img src="{{foto.imagen_2.url}}" alt="" />
                                     </a>
                                     <div class="modal fade" id="2" tabindex="-1" role="dialog">
                                         <div class="modal-dialog" role="document">
@@ -631,7 +391,7 @@
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close"><span aria-hidden="true">×</span></button>
                                                 <div class="modal-body">
-                                                    <img src="{{foto.imagen_2}}" alt="" />
+                                                    <img src="{{foto.imagen_2.url}}" alt="" />
                                                 </div>
                                                 <div class="col-md-12 description">
                                                     <h4>{{foto.imagen_2_descripcion}}</h4>
@@ -644,7 +404,7 @@
                             <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
                                 <div class="box">
                                     <a href="#" data-toggle="modal" data-target="#3">
-                                        <img src="{{foto.imagen_3}}" alt="" />
+                                        <img src="{{foto.imagen_3.url}}" alt="" />
                                     </a>
                                     <div class="modal fade" id="3" tabindex="-1" role="dialog">
                                         <div class="modal-dialog" role="document">
@@ -652,7 +412,7 @@
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close"><span aria-hidden="true">×</span></button>
                                                 <div class="modal-body">
-                                                    <img src="{{foto.imagen_3}}" alt="" />
+                                                    <img src="{{foto.imagen_3.url}}" alt="" />
                                                 </div>
                                                 <div class="col-md-12 description">
                                                     <h4>{{foto.imagen_3_descripcion}}</h4>
@@ -665,7 +425,7 @@
                             <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
                                 <div class="box">
                                     <a href="#" data-toggle="modal" data-target="#4">
-                                        <img src="{{foto.imagen_4}}" alt="" />
+                                        <img src="{{foto.imagen_4.url}}" alt="" />
                                     </a>
                                     <div class="modal fade" id="4" tabindex="-1" role="dialog">
                                         <div class="modal-dialog" role="document">
@@ -673,7 +433,7 @@
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close"><span aria-hidden="true">×</span></button>
                                                 <div class="modal-body">
-                                                    <img src="{{foto.imagen_4}}" alt="" />
+                                                    <img src="{{foto.imagen_4.url}}" alt="" />
                                                 </div>
                                                 <div class="col-md-12 description">
                                                     <h4>{{foto.imagen_4_descripcion}}</h4>
@@ -686,7 +446,7 @@
                             <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
                                 <div class="box">
                                     <a href="#" data-toggle="modal" data-target="#5">
-                                        <img src="{{foto.imagen_5}}" alt="" />
+                                        <img src="{{foto.imagen_5.url}}" alt="" />
                                     </a>
                                     <div class="modal fade" id="5" tabindex="-1" role="dialog">
                                         <div class="modal-dialog" role="document">
@@ -694,7 +454,7 @@
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close"><span aria-hidden="true">×</span></button>
                                                 <div class="modal-body">
-                                                    <img src="{{foto.imagen_5}}" alt="" />
+                                                    <img src="{{foto.imagen_5.url}}" alt="" />
                                                 </div>
                                                 <div class="col-md-12 description">
                                                     <h4>{{foto.imagen_5_descripcion}}</h4>
@@ -707,7 +467,7 @@
                             <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
                                 <div class="box">
                                     <a href="#" data-toggle="modal" data-target="#9">
-                                        <img src="{{foto.imagen_6}}" alt="" />
+                                        <img src="{{foto.imagen_6.url}}" alt="" />
                                     </a>
                                     <div class="modal fade" id="9" tabindex="-1" role="dialog">
                                         <div class="modal-dialog" role="document">
@@ -715,7 +475,7 @@
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close"><span aria-hidden="true">×</span></button>
                                                 <div class="modal-body">
-                                                    <img src="{{foto.imagen_6}}" alt="" />
+                                                    <img src="{{foto.imagen_6.url}}" alt="" />
                                                 </div>
                                                 <div class="col-md-12 description">
                                                     <h4>{{foto.imagen_6_descripcion}}</h4>
@@ -728,7 +488,7 @@
                             <div class="col-md-8 col-sm-12 co-xs-12 gal-item">
                                 <div class="box">
                                     <a href="#" data-toggle="modal" data-target="#10">
-                                        <img src="{{foto.imagen_7}}" alt="" />
+                                        <img src="{{foto.imagen_7.url}}" alt="" />
                                     </a>
                                     <div class="modal fade" id="10" tabindex="-1" role="dialog">
                                         <div class="modal-dialog" role="document">
@@ -736,7 +496,7 @@
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close"><span aria-hidden="true">×</span></button>
                                                 <div class="modal-body">
-                                                    <img src="{{foto.imagen_7}}" alt="" />
+                                                    <img src="{{foto.imagen_7.url}}" alt="" />
                                                 </div>
                                                 <div class="col-md-12 description">
                                                     <h4>{{foto.imagen_7_descripcion}}</h4>
@@ -749,7 +509,7 @@
                             <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
                                 <div class="box">
                                     <a href="#" data-toggle="modal" data-target="#11">
-                                        <img src="{{foto.imagen_8}}" alt="" />
+                                        <img src="{{foto.imagen_8.url}}" alt="" />
                                     </a>
                                     <div class="modal fade" id="11" tabindex="-1" role="dialog">
                                         <div class="modal-dialog" role="document">
@@ -757,7 +517,7 @@
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close"><span aria-hidden="true">×</span></button>
                                                 <div class="modal-body">
-                                                    <img src="{{foto.imagen_8}}" alt="" />
+                                                    <img src="{{foto.imagen_8.url}}" alt="" />
                                                 </div>
                                                 <div class="col-md-12 description">
                                                     <h4>{{foto.imagen_8_descripcion}}</h4>
@@ -770,7 +530,7 @@
                             <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
                                 <div class="box">
                                     <a href="#" data-toggle="modal" data-target="#12">
-                                        <img src="{{foto.imagen_9}}" alt="" />
+                                        <img src="{{foto.imagen_9.url}}" alt="" />
                                     </a>
                                     <div class="modal fade" id="12" tabindex="-1" role="dialog">
                                         <div class="modal-dialog" role="document">
@@ -778,7 +538,7 @@
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close"><span aria-hidden="true">×</span></button>
                                                 <div class="modal-body">
-                                                    <img src="{{foto.imagen_9}}" alt="" />
+                                                    <img src="{{foto.imagen_9.url}}" alt="" />
                                                 </div>
                                                 <div class="col-md-12 description">
                                                     <h4>{{foto.imagen_9_descripcion}}</h4>
@@ -791,7 +551,7 @@
                             <div class="col-md-4 col-sm-6 co-xs-12 gal-item">
                                 <div class="box">
                                     <a href="#" data-toggle="modal" data-target="#13">
-                                        <img src="{{foto.imagen_10}}" alt="" />
+                                        <img src="{{foto.imagen_10.url}}" alt="" />
                                     </a>
                                     <div class="modal fade" id="13" tabindex="-1" role="dialog">
                                         <div class="modal-dialog" role="document">
@@ -799,7 +559,7 @@
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close"><span aria-hidden="true">×</span></button>
                                                 <div class="modal-body">
-                                                    <img src="{{foto.imagen_10}}" alt="" />
+                                                    <img src="{{foto.imagen_10.url}}" alt="" />
                                                 </div>
                                                 <div class="col-md-12 description">
                                                     <h4>{{foto.imagen_10_descripcion}}</h4>
@@ -809,12 +569,8 @@
                                     </div>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
                     {% endfor %}
-
-
-
-
                 </div>
             </div>
         </div>
@@ -833,27 +589,12 @@
                             <div class="col-md-6 col-sm-6">
                                 <div class="blog-block">
                                     <div class="blog-img-box">
-
-
-
-
-                                        <!-- CAMBIO A PRODUCCION -->
-                                        <!-- Borrar la primer imagen y descomentar la segunda -->
-
-                                        <img src="{%static 'images/featured-image-01.jpg'%}" alt="" />
-                                        <!-- <img src="{{novedades.imagen}}" alt="" /> -->
-
-
-
-
-
-
-
+                                        <img src="{{novedad.imagen.url}}"width='400' height='250' alt=""/>
                                     </div>
                                     <div class="blog-dit">
                                         <p><span>{{novedad.creado}}</span></p>
-                                        <h2>{{novedad.titulo}}</h2>
-                                        <h5>{{novedad.contenido}}</h5>
+                                        <h2 style='height: 13rem'>{{novedad.titulo}}</h2>
+                                        <h5 style='height: 8rem'>{{novedad.contenido}}</h5>
                                     </div>
                                 </div>
                             </div>
@@ -866,32 +607,27 @@
             </div>
         </div>
     </div>
-
-
-
     <div class="gtco-section" id="contacto-form">
         <div class="gtco-container">
             <div class="row">
                 <div class="col-md-12">
                     <div class="col-md-6 animate-box">
                         <h3>Ponte en contacto!</h3>
-                        <form action="#">
+                        <form action="" method="POST">
+                            {% csrf_token %}
                             <div class="row form-group">
                                 <div class="col-md-12">
-                                    <label class="sr-only" for="name"></label>
-                                    <input type="text" id="name" class="form-control" placeholder="Nombre completo">
+                                    <input type="text" name="nombre" class="form-control" placeholder="Nombre completo">
                                 </div>
                             </div>
                             <div class="row form-group">
                                 <div class="col-md-12">
-                                    <label class="sr-only" for="email"></label>
-                                    <input type="text" id="email" class="form-control" placeholder="Email de contacto">
+                                    <input type="text" name="email" class="form-control" placeholder="Email de contacto">
                                 </div>
                             </div>
                             <div class="row form-group">
                                 <div class="col-md-12">
-                                    <label class="sr-only" for="message"></label>
-                                    <textarea name="message" id="message" cols="30" rows="10" class="form-control"
+                                    <textarea name="mensaje" cols="30" rows="10" class="form-control"
                                         placeholder="Dejanos tu mensaje"></textarea>
                                 </div>
                             </div>
@@ -920,8 +656,9 @@
             </div>
         </div>
     </div>
-
-
+<a class="appWhatsapp" href="https://api.whatsapp.com/send?phone=543412146737" target='_blank'>
+    <img src="{% static 'images/whatsapp.png' %}" alt="whatsapp">
+</a>
     <div id="footer" class="footer-main">
         <div class="footer-news pad-top-100 pad-bottom-70 parallax">
             <div class="container">
@@ -1014,8 +751,6 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <h6 class="copy-title"> Copyright &copy; 2017 Food Funday is powered by <a href="#"
-                                    target="_blank"></a> </h6>
                         </div>
                     </div>
                     <!-- end row -->
